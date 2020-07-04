@@ -2,23 +2,14 @@
   <div class="home">
     <div class="columns is-medium is-0-desktop">
       <div class="column is-three-fifths is-offset-one-fifth">
-        <Navbar />
+        <Navbar msg="Resultados del test" />
         <br />
         <div class="margin">
           <p style="text-align: justify">
-            Invito a usted a participar de la siguiente encuesta anónima, con el
-            objetivo de identificar los factores asociados a este síndrome que
-            se puedan encontrar entre los trabajadores de la salud. Se le
-            agradece de antemano su participación. Los datos recolectados sólo
-            serán conocidos y trabajados por el personal investigador. Usted
-            tiene derecho a no participar de la encuesta virtual, si no lo
-            desea.
+            {{ data }}
+            {{ quest1 }}
+            {{ quest2 }}
           </p>
-          <b-field grouped position="is-right">
-            <div class="buttons" style="margin-top: 25px;">
-              <b-button @click="changeForm" type="is-info">Aceptar</b-button>
-            </div>
-          </b-field>
         </div>
       </div>
     </div>
@@ -31,6 +22,13 @@ import { db } from "../plugins/firebase";
 
 export default {
   name: "Home",
+  props: ["quest1", "quest2", "data"],
+  mounted() {
+    if (!this.quest1 || !this.quest2 || !this.data) {
+      this.$router.push({ name: "Home" });
+      return {};
+    }
+  },
   data() {
     return {};
   },
