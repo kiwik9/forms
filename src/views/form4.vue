@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home bg-img">
     <div class="columns is-medium is-0-desktop">
-      <div class="column is-three-fifths is-offset-one-fifth">
+      <div class="column is-three-fifths is-offset-one-fifth" style="height: 100%; background-color: white">
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "
@@ -207,7 +207,7 @@
 
           <b-field grouped position="is-right">
             <div class="buttons" style="margin-top: 40px;margin-bottom: 15%">
-              <b-button @click="changeForm" type="is-info">Finalizar</b-button>
+              <b-button @click="changeForm" type="is-info" :loading="loading">Finalizar</b-button>
             </div>
           </b-field>
         </div>
@@ -235,6 +235,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       q1: "",
       q2: "",
       q3: "",
@@ -287,28 +288,34 @@ export default {
         });
     },
     changeForm() {
+      this.loading = true;
       if (this.q1 === "") {
         this.error_q1 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q2 === "") {
         this.error_q2 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q3 === "") {
         this.error_q3 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q4 === "") {
         this.error_q4 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q5 === "") {
         this.error_q5 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }

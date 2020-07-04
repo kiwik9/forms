@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <div class="columns is-medium is-0-desktop">
-      <div class="column is-three-fifths is-offset-one-fifth">
+  <div class="home" style="height: 100%">
+    <div class="columns is-medium is-0-desktop" style="height: 100%">
+      <div class="column is-three-fifths is-offset-one-fifth" style="height: 100%; background-color: white;">
         <Navbar />
         <br />
         <div class="margin">
@@ -63,6 +63,11 @@ export default {
 };
 </script>
 <style>
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+  }
 .margin {
   margin-left: 5%;
   margin-right: 5%;

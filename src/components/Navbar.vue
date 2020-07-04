@@ -1,7 +1,6 @@
 <template>
-  <section class="hero is-info">
+  <section class="hero is-info" >
     <div class="hero-body">
-      <div class="container">
         <h1 class="title">
           Cuestionario de Malasch Burnout Inventory
         </h1>
@@ -19,7 +18,6 @@
         <p>{{q6}}</p>
         <p>{{q7}}</p>
       </div>
-    </div>
   </section>
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
+  <div class="home bg-img">
     <div class="columns is-medium is-0-desktop">
-      <div class="column is-three-fifths is-offset-one-fifth">
+      <div class="column is-three-fifths is-offset-one-fifth" style="height: 100%; background-color: white">
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "

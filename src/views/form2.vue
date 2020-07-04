@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <div class="columns is-medium is-0-desktop">
-      <div class="column is-three-fifths is-offset-one-fifth">
+  <div class="home bg-img"  style="height: auto">
+    <div class="columns is-medium is-0-desktop"  style="height: 100%">
+      <div class="column is-three-fifths is-offset-one-fifth" style="background-color: white">
         <Navbar
           msg="RECOLECCIÓN DE DATOS"
           msg2="Al continuar usted laborando en el hospital, puede responder a las siguientes respuestas del cuestionario."
@@ -29,7 +29,7 @@
 
           <section style="margin-top: 25px">
             <b-field label="Edad" style="width: 200PX" message="">
-              <b-input v-model="age" type="number" min="0" max="100" />
+              <b-input v-model="age" type="number" min="18" max="100" />
             </b-field>
             <b-field
               v-if="ageError"
@@ -444,7 +444,14 @@ export default {
   }
 };
 </script>
-<style>
+<style >
+  .bg-img {
+    background-image: url("../assets/Image2.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
 .margin {
   margin-left: 5%;
   margin-right: 5%;
