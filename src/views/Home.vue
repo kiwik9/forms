@@ -1,7 +1,7 @@
 <template>
   <div class="home" style="height: 100%">
-    <div class="columns is-medium is-0-desktop" style="height: 100%">
-      <div class="column is-three-fifths is-offset-one-fifth" style="height: 100%; background-color: white;">
+    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
+      <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar />
         <br />
         <div class="margin">

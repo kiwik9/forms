@@ -5,6 +5,7 @@ import Form1 from "../views/form1.vue";
 import Form2 from "../views/form2.vue";
 import Form3 from "../views/form3.vue";
 import Form4 from "../views/form4.vue";
+import Form5 from "../views/form5.vue";
 import Results from "../views/results.vue";
 import Login from "../views/admin/login";
 import Admin from "../views/admin/admin";
@@ -39,6 +40,12 @@ const routes = [
     path: "/form/4",
     name: "Form4",
     component: Form4,
+    props: true
+  },
+  {
+    path: "/form/5",
+    name: "Form5",
+    component: Form5,
     props: true
   },
   {

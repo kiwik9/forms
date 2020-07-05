@@ -1,7 +1,10 @@
 <template>
-  <div class="home bg-img"  style="height: auto">
-    <div class="columns is-medium is-0-desktop"  style="height: 100%">
-      <div class="column is-three-fifths is-offset-one-fifth" style="background-color: white">
+  <div class="home bg-img" style="height: auto">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
+      <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar
           msg="RECOLECCIÓN DE DATOS"
           msg2="Al continuar usted laborando en el hospital, puede responder a las siguientes respuestas del cuestionario."
@@ -444,14 +447,14 @@ export default {
   }
 };
 </script>
-<style >
-  .bg-img {
-    background-image: url("../assets/Image2.png");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-  }
+<style>
+.bg-img {
+  background-image: url("../assets/Image2.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
 .margin {
   margin-left: 5%;
   margin-right: 5%;

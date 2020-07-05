@@ -1,6 +1,9 @@
 <template>
   <div class="home bg-img">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
       <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
@@ -17,7 +20,7 @@
         <div class="margin">
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento emocionalmente agotado por mi trabajo"
+              label="Siento que puedo entender fácilmente a los pacientes "
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -55,7 +58,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento cansado al final de la jornada de trabajo"
+              label="Siento que trato con mucha eficacia los problemas de mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -93,7 +96,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Cuando me levanto por la mañana y me enfrento a otra jornada de trabajo me siento fatigado"
+              label="Siento que estoy influyendo positiva mente en la vida de otras personas a través de mi trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -131,7 +134,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que trabajar todo el día con gente supone un gran esfuerzo y me cansa."
+              label="Me siento con mucha energía en mi trabajo."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -169,7 +172,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que mi trabajo me está desgastando"
+              label="Siento que puedo crear con facilidad un clima agradable con mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -207,7 +210,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento frustrado/a en mi trabajo"
+              label="Me siento estimado después de haber trabajado íntimamente con mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -245,7 +248,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Creo que trabajo demasiado"
+              label="Creo que consigo muchas cosas valiosas en este trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -283,7 +286,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Trabajar directamente con alumnos/as me produce estrés."
+              label="Siento que en mi trabajo los problemas emocionales son tratados de forma adecuada."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -319,47 +322,11 @@
             ></b-field>
           </section>
 
-          <section style="margin-top: 25px">
-            <b-field
-              label="Me siento acabado en mi trabajo, al límite de mis posibilidades."
-              style="margin-bottom: 25px"
-            >
-            </b-field>
-            <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="0">
-                0
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="1">
-                1
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="2">
-                2
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="3">
-                3
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="4">
-                4
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="5">
-                5
-              </b-radio-button>
-              <b-radio-button style="margin: 2%" v-model="q9" native-value="6">
-                6
-              </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
-            </b-field>
-            <b-field
-              v-if="error_q9"
-              type="is-danger"
-              message="Esta respuesta es requerida."
-            ></b-field>
-          </section>
-
           <b-field grouped position="is-right">
             <div class="buttons" style="margin-top: 40px;margin-bottom: 15%">
-              <b-button @click="changeForm" type="is-info">Siguiente</b-button>
+              <b-button @click="changeForm" type="is-info" :loading="loading"
+                >Finalizar</b-button
+              >
             </div>
           </b-field>
         </div>
@@ -370,17 +337,20 @@
 
 <script>
 import Navbar from "../components/Navbar";
+import { db } from "../plugins/firebase";
 
 export default {
-  name: "Form2",
-  props: ["data"],
+  name: "Form5",
+  props: ["quest1", "quest2", "data"],
   mounted() {
-    if (!this.data) {
+    if (!this.quest1 || !this.quest2 || !this.data) {
       this.$router.push({ name: "Home" });
+      return {};
     }
   },
   data() {
     return {
+      loading: false,
       q1: "",
       q2: "",
       q3: "",
@@ -389,7 +359,6 @@ export default {
       q6: "",
       q7: "",
       q8: "",
-      q9: "",
       error_q1: false,
       error_q2: false,
       error_q3: false,
@@ -397,11 +366,51 @@ export default {
       error_q5: false,
       error_q6: false,
       error_q7: false,
-      error_q8: false,
-      error_q9: false
+      error_q8: false
+    };
+  },
+  firestore() {
+    return {
+      formsDB: db.collection("forms")
     };
   },
   methods: {
+    add() {
+      const quest3 = {
+        q1: this.q1,
+        q2: this.q2,
+        q3: this.q3,
+        q4: this.q4,
+        q5: this.q5,
+        q6: this.q6,
+        q7: this.q7,
+        q8: this.q8
+      };
+      let router = this.$router;
+      let quest1 = this.quest1;
+      let quest2 = this.quest2;
+      let data = this.data;
+      this.$firestore.formsDB
+        .add({
+          data: JSON.parse(this.data),
+          form1: JSON.parse(this.quest1),
+          form2: JSON.parse(this.quest2),
+          form3: quest3,
+          createdAt: new Date()
+        })
+        .then(function(resp) {
+          console.log(resp);
+          router.push({
+            name: "Results",
+            params: {
+              quest3: JSON.stringify(quest3),
+              quest2: quest2,
+              quest1: quest1,
+              data: data
+            }
+          });
+        });
+    },
     errorNotification() {
       this.$buefy.notification.open({
         duration: 1500,
@@ -412,66 +421,56 @@ export default {
       });
     },
     changeForm() {
+      this.loading = true;
       if (this.q1 === "") {
         this.error_q1 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q2 === "") {
         this.error_q2 = true;
+        this.loading = false;
         this.errorNotification();
         return;
       }
       if (this.q3 === "") {
+        this.loading = false;
         this.error_q3 = true;
         this.errorNotification();
         return;
       }
       if (this.q4 === "") {
+        this.loading = false;
         this.error_q4 = true;
         this.errorNotification();
         return;
       }
       if (this.q5 === "") {
+        this.loading = false;
         this.error_q5 = true;
         this.errorNotification();
         return;
       }
       if (this.q6 === "") {
+        this.loading = false;
         this.error_q6 = true;
         this.errorNotification();
         return;
       }
       if (this.q7 === "") {
+        this.loading = false;
         this.error_q7 = true;
         this.errorNotification();
         return;
       }
       if (this.q8 === "") {
+        this.loading = false;
         this.error_q8 = true;
         this.errorNotification();
         return;
       }
-      if (this.q9 === "") {
-        this.error_q9 = true;
-        this.errorNotification();
-        return;
-      }
-      const quest1 = {
-        q1: this.q1,
-        q2: this.q2,
-        q3: this.q3,
-        q4: this.q4,
-        q5: this.q5,
-        q6: this.q6,
-        q7: this.q7,
-        q8: this.q8,
-        q9: this.q9
-      };
-      this.$router.push({
-        name: "Form4",
-        params: { quest1: JSON.stringify(quest1), data: this.data }
-      });
+      this.add();
     }
   },
   components: {

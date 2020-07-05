@@ -1,7 +1,10 @@
 <template>
   <div class="home bg-img">
-    <div class="columns is-medium is-0-desktop">
-      <div class="column is-three-fifths is-offset-one-fifth" style="height: 100%; background-color: white">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
+      <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "
@@ -207,7 +210,7 @@
 
           <b-field grouped position="is-right">
             <div class="buttons" style="margin-top: 40px;margin-bottom: 15%">
-              <b-button @click="changeForm" type="is-info" :loading="loading">Finalizar</b-button>
+              <b-button @click="changeForm" type="is-info">Siguiente</b-button>
             </div>
           </b-field>
         </div>
@@ -218,7 +221,6 @@
 
 <script>
 import Navbar from "../components/Navbar";
-import { db } from "../plugins/firebase";
 
 export default {
   name: "Form4",
@@ -228,14 +230,8 @@ export default {
       this.$router.push({ name: "Home" });
     }
   },
-  firestore() {
-    return {
-      formsDB: db.collection("forms")
-    };
-  },
   data() {
     return {
-      loading: false,
       q1: "",
       q2: "",
       q3: "",
@@ -258,7 +254,32 @@ export default {
         hasIcon: false
       });
     },
-    add() {
+    changeForm() {
+      if (this.q1 === "") {
+        this.error_q1 = true;
+        this.errorNotification();
+        return;
+      }
+      if (this.q2 === "") {
+        this.error_q2 = true;
+        this.errorNotification();
+        return;
+      }
+      if (this.q3 === "") {
+        this.error_q3 = true;
+        this.errorNotification();
+        return;
+      }
+      if (this.q4 === "") {
+        this.error_q4 = true;
+        this.errorNotification();
+        return;
+      }
+      if (this.q5 === "") {
+        this.error_q5 = true;
+        this.errorNotification();
+        return;
+      }
       const quest2 = {
         q1: this.q1,
         q2: this.q2,
@@ -266,60 +287,14 @@ export default {
         q4: this.q4,
         q5: this.q5
       };
-      let router = this.$router;
-      let quest1 = this.quest1;
-      let data = this.data;
-      this.$firestore.formsDB
-        .add({
-          data: JSON.parse(this.data),
-          form1: JSON.parse(this.quest1),
-          form2: quest2,
-          createdAt: new Date()
-        })
-        .then(function(resp) {
-          console.log(resp);
-          router.push({
-            name: "Results",
-            params: {
-              quest2: JSON.stringify(quest2),
-              quest1: quest1,
-              data: data
-            }})
-        });
-    },
-    changeForm() {
-      this.loading = true;
-      if (this.q1 === "") {
-        this.error_q1 = true;
-        this.loading = false;
-        this.errorNotification();
-        return;
-      }
-      if (this.q2 === "") {
-        this.error_q2 = true;
-        this.loading = false;
-        this.errorNotification();
-        return;
-      }
-      if (this.q3 === "") {
-        this.error_q3 = true;
-        this.loading = false;
-        this.errorNotification();
-        return;
-      }
-      if (this.q4 === "") {
-        this.error_q4 = true;
-        this.loading = false;
-        this.errorNotification();
-        return;
-      }
-      if (this.q5 === "") {
-        this.error_q5 = true;
-        this.loading = false;
-        this.errorNotification();
-        return;
-      }
-      this.add();
+      this.$router.push({
+        name: "Form5",
+        params: {
+          quest1: this.quest1,
+          quest2: JSON.stringify(quest2),
+          data: this.data
+        }
+      });
     }
   },
   components: {
