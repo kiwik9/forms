@@ -190,9 +190,6 @@ export default {
             "Exclusividad en Hospital": f.data.esclusivity,
             Trabajo: f.data.workerType,
             Especialidad: f.data.speciality,
-            "Puntuacion Cansancio Emocional": r1,
-            "Puntuacion Despersonalizacion": r2,
-            "Puntuacion Realizacion Personal": r3,
             Pregunta1: f.form1.q1,
             Pregunta2: f.form1.q2,
             Pregunta3: f.form1.q3,
@@ -214,7 +211,10 @@ export default {
             Pregunta19: f.form3.q5,
             Pregunta20: f.form3.q6,
             Pregunta21: f.form3.q7,
-            Pregunta22: f.form3.q8
+            Pregunta22: f.form3.q8,
+            "Puntuacion Cansancio Emocional": r1,
+            "Puntuacion Despersonalizacion": r2,
+            "Puntuacion Realizacion Personal": r3
           };
           data.push(value);
         });

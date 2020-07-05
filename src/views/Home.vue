@@ -1,7 +1,13 @@
 <template>
   <div class="home" style="height: 100%">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
-      <div class="column is-half" style="height: 100%; background-color: white">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
+      <div
+        class="column is-half"
+        style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)"
+      >
         <Navbar />
         <br />
         <div class="margin">
@@ -63,11 +69,11 @@ export default {
 };
 </script>
 <style>
-  body,
-  html {
-    width: 100%;
-    height: 100%;
-  }
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 .margin {
   margin-left: 5%;
   margin-right: 5%;

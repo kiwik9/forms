@@ -5,11 +5,11 @@
 </template>
 
 <style>
-  body,
-  html {
-    width: 100%;
-    height: auto;
-  }
+body,
+html {
+  width: 100%;
+  height: auto;
+}
 body {
   background-image: url("assets/Image2.png");
   background-attachment: fixed;

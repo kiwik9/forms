@@ -1,7 +1,7 @@
 <template>
   <div class="home" style="height: 100%">
     <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
-      <div class="column is-half" style="height: 100%; background-color: white">
+      <div class="column is-half" style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)">
         <Navbar msg="" />
         <br />
         <div class="margin">
