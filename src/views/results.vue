@@ -1,16 +1,19 @@
 <template>
-  <div class="home bg-img" style="height: 130%">
+  <div class="home bg-img" style="height: 140%;">
     <div
       class="columns is-centered is-gapless is-0-desktop"
       style="height: 100%"
     >
-      <div class="column is-half" style="height: 100%; background-color: white">
+      <div
+        class="column is-half"
+        style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)"
+      >
         <Navbar msg="Resultados del test" />
         <br />
         <div class="margin">
           <div
             class="columns is-0-desktop is-multiline is-centered"
-            style="margin-top: 50px"
+            style="margin-top: 50px;margin-bottom: 100px"
           >
             <div class="column">
               <radial-progress-bar
@@ -112,8 +115,7 @@ export default {
       number[13] +
       number[15] +
       number[19];
-    this.r2 =
-      number[4] + number[9] + number[10] + number[14] + number[7] + number[21];
+    this.r2 = number[4] + number[9] + number[10] + number[14] + number[21];
     this.r3 =
       number[3] +
       number[6] +
