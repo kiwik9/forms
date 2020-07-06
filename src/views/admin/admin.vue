@@ -172,7 +172,7 @@ export default {
           let result1 = "BAJO";
           let result2 = "BAJO";
           let result3 = "BAJO";
-          let positivo = "NEGATIVO";
+          let positivo = "0";
           if (r1 >= 19 && r1 <= 26) {
             result1 = "MEDIO";
           }
@@ -192,7 +192,7 @@ export default {
             result3 = "ALTO";
           }
           if (result1 === "ALTO" && result2 === "ALTO" && result3 === "BAJO") {
-            positivo = "POSITIVO";
+            positivo = "1";
           }
 
           let value = {
