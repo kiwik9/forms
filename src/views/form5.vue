@@ -20,7 +20,7 @@
         <div class="margin">
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que puedo entender fácilmente a los pacientes "
+              label="1. Siento que puedo entender fácilmente a los pacientes "
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -58,7 +58,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que trato con mucha eficacia los problemas de mis pacientes"
+              label="2. Siento que trato con mucha eficacia los problemas de mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -96,7 +96,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que estoy influyendo positiva mente en la vida de otras personas a través de mi trabajo"
+              label="3. Siento que estoy influyendo positiva mente en la vida de otras personas a través de mi trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -134,7 +134,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento con mucha energía en mi trabajo."
+              label="4. Me siento con mucha energía en mi trabajo."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -172,7 +172,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que puedo crear con facilidad un clima agradable con mis pacientes"
+              label="5. Siento que puedo crear con facilidad un clima agradable con mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -210,7 +210,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento estimado después de haber trabajado íntimamente con mis pacientes"
+              label="6. Me siento estimado después de haber trabajado íntimamente con mis pacientes"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -248,7 +248,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Creo que consigo muchas cosas valiosas en este trabajo"
+              label="7. Creo que consigo muchas cosas valiosas en este trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -286,7 +286,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que en mi trabajo los problemas emocionales son tratados de forma adecuada."
+              label="8. Siento que en mi trabajo los problemas emocionales son tratados de forma adecuada."
               style="margin-bottom: 25px"
             >
             </b-field>

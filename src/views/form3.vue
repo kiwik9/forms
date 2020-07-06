@@ -1,6 +1,9 @@
 <template>
   <div class="home bg-img">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
       <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
@@ -17,7 +20,7 @@
         <div class="margin">
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento emocionalmente agotado por mi trabajo"
+              label="1. Me siento emocionalmente agotado por mi trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -55,7 +58,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento cansado al final de la jornada de trabajo"
+              label="2. Me siento cansado al final de la jornada de trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -93,7 +96,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Cuando me levanto por la mañana y me enfrento a otra jornada de trabajo me siento fatigado"
+              label="3. Cuando me levanto por la mañana y me enfrento a otra jornada de trabajo me siento fatigado"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -131,7 +134,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que trabajar todo el día con gente supone un gran esfuerzo y me cansa."
+              label="4. Siento que trabajar todo el día con gente supone un gran esfuerzo y me cansa."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -169,7 +172,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que mi trabajo me está desgastando"
+              label="5. Siento que mi trabajo me está desgastando"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -207,7 +210,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento frustrado/a en mi trabajo"
+              label="6. Me siento frustrado/a en mi trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -245,7 +248,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Creo que trabajo demasiado"
+              label="7. Creo que trabajo demasiado"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -283,7 +286,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Trabajar directamente con alumnos/as me produce estrés."
+              label="8. Trabajar directamente con alumnos/as me produce estrés."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -321,7 +324,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me siento acabado en mi trabajo, al límite de mis posibilidades."
+              label="9. Me siento acabado en mi trabajo, al límite de mis posibilidades."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -398,7 +401,7 @@ export default {
       error_q6: false,
       error_q7: false,
       error_q8: false,
-      error_q9: false
+      error_q9: false,
     };
   },
   methods: {
@@ -408,7 +411,7 @@ export default {
         message: `Es necesario responder todas las preguntas.`,
         position: "is-bottom-right",
         type: "is-danger",
-        hasIcon: false
+        hasIcon: false,
       });
     },
     changeForm() {
@@ -466,17 +469,17 @@ export default {
         q6: this.q6,
         q7: this.q7,
         q8: this.q8,
-        q9: this.q9
+        q9: this.q9,
       };
       this.$router.push({
         name: "Form4",
-        params: { quest1: JSON.stringify(quest1), data: this.data }
+        params: { quest1: JSON.stringify(quest1), data: this.data },
       });
-    }
+    },
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>

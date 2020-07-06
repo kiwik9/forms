@@ -20,7 +20,7 @@
         <div class="margin">
           <section style="margin-top: 25px">
             <b-field
-              label="Creo que estoy tratando a algunos pacientes como si fueran objetos impersonales"
+              label="1. Creo que estoy tratando a algunos pacientes como si fueran objetos impersonales"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -58,7 +58,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que me he hecho más duro con la gente "
+              label="2. Siento que me he hecho más duro con la gente "
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -96,7 +96,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me preocupa que este trabajo me esté endureciendo emocionalmente"
+              label="3. Me preocupa que este trabajo me esté endureciendo emocionalmente"
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -134,7 +134,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Siento que realmente no me importa lo que les ocurra a mis pacientes."
+              label="4. Siento que realmente no me importa lo que les ocurra a mis pacientes."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -172,7 +172,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="Me parece que los pacientes me culpan de alguno de sus problemas."
+              label="5. Me parece que los pacientes me culpan de alguno de sus problemas."
               style="margin-bottom: 25px"
             >
             </b-field>
@@ -241,7 +241,7 @@ export default {
       error_q2: false,
       error_q3: false,
       error_q4: false,
-      error_q5: false
+      error_q5: false,
     };
   },
   methods: {
@@ -251,7 +251,7 @@ export default {
         message: `Es necesario responder todas las preguntas.`,
         position: "is-bottom-right",
         type: "is-danger",
-        hasIcon: false
+        hasIcon: false,
       });
     },
     changeForm() {
@@ -285,21 +285,21 @@ export default {
         q2: this.q2,
         q3: this.q3,
         q4: this.q4,
-        q5: this.q5
+        q5: this.q5,
       };
       this.$router.push({
         name: "Form5",
         params: {
           quest1: this.quest1,
           quest2: JSON.stringify(quest2),
-          data: this.data
-        }
+          data: this.data,
+        },
       });
-    }
+    },
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>
