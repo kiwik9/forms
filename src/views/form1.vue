@@ -43,19 +43,23 @@ export default {
   props: ["perm"],
   data() {
     return {
-      radio: "Si",
+      radio: "Si"
     };
   },
   methods: {
     changeForm() {
       if (this.radio === "No") {
+        this.$router.push({
+          name: "Thank",
+          params: { perm: true }
+        });
         return;
       }
       this.$router.push({
         name: "Form2",
-        params: { perm: true },
+        params: { perm: true }
       });
-    },
+    }
   },
   mounted() {
     if (!this.perm) {
@@ -63,8 +67,8 @@ export default {
     }
   },
   components: {
-    Navbar,
-  },
+    Navbar
+  }
 };
 </script>
 <style>

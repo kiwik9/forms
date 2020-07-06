@@ -158,13 +158,7 @@ export default {
             number[13] +
             number[15] +
             number[19];
-          let r2 =
-            number[4] +
-            number[9] +
-            number[10] +
-            number[14] +
-            number[7] +
-            number[21];
+          let r2 = number[4] + number[9] + number[10] + number[14] + number[21];
           let r3 =
             number[3] +
             number[6] +
@@ -174,10 +168,38 @@ export default {
             number[17] +
             number[18] +
             number[20];
+
+          let result1 = "BAJO";
+          let result2 = "BAJO";
+          let result3 = "BAJO";
+          let positivo = "NEGATIVO";
+          if (r1 >= 19 && r1 <= 26) {
+            result1 = "MEDIO";
+          }
+          if (r1 >= 27 && r1 <= 54) {
+            result1 = "ALTO";
+          }
+          if (r2 >= 6 && r2 <= 9) {
+            result2 = "MEDIO";
+          }
+          if (r2 >= 10 && r2 <= 30) {
+            result2 = "ALTO";
+          }
+          if (r3 >= 34 && r3 <= 39) {
+            result3 = "MEDIO";
+          }
+          if (r3 >= 40 && r3 <= 56) {
+            result3 = "ALTO";
+          }
+          if (result1 === "ALTO" && result2 === "ALTO" && result3 === "BAJO") {
+            positivo = "POSITIVO";
+          }
+
           let value = {
             Nro: id,
             Registro: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`,
             edad: f.data.age,
+            Labora: f.data.laboral,
             "Experiencia Laboral": f.data.laboredExp,
             "Años en el Hospital": f.data.laboredHosp,
             Guardia: f.data.guardType,
@@ -190,31 +212,10 @@ export default {
             "Exclusividad en Hospital": f.data.esclusivity,
             Trabajo: f.data.workerType,
             Especialidad: f.data.speciality,
-            Pregunta1: f.form1.q1,
-            Pregunta2: f.form1.q2,
-            Pregunta3: f.form1.q3,
-            Pregunta4: f.form1.q4,
-            Pregunta5: f.form1.q5,
-            Pregunta6: f.form1.q6,
-            Pregunta7: f.form1.q7,
-            Pregunta8: f.form1.q8,
-            Pregunta9: f.form1.q9,
-            Pregunta10: f.form2.q1,
-            Pregunta11: f.form2.q2,
-            Pregunta12: f.form2.q3,
-            Pregunta13: f.form2.q4,
-            Pregunta14: f.form2.q5,
-            Pregunta15: f.form3.q1,
-            Pregunta16: f.form3.q2,
-            Pregunta17: f.form3.q3,
-            Pregunta18: f.form3.q4,
-            Pregunta19: f.form3.q5,
-            Pregunta20: f.form3.q6,
-            Pregunta21: f.form3.q7,
-            Pregunta22: f.form3.q8,
-            "Puntuacion Cansancio Emocional": r1,
-            "Puntuacion Despersonalizacion": r2,
-            "Puntuacion Realizacion Personal": r3
+            "Puntuacion Cansancio Emocional": `${result1} (${r1})`,
+            "Puntuacion Despersonalizacion": `${result2} (${r2})`,
+            "Puntuacion Realizacion Personal": `${result3} (${r2})`,
+            BURNOUT: positivo
           };
           data.push(value);
         });

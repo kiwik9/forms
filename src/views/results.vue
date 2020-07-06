@@ -60,18 +60,22 @@
             </div>
           </div>
 
-          <p
-            style="margin-left: 7%;margin-right: 7%;font-style: italic;text-align: center;margin-top: 100px"
-          >
-            Altas puntuaciones en las dos primeras subescalas y bajas en la
-            tercera definen el síndrome de Burnout. Hay que analizar de manera
-            detallada los distintos aspectos para determinar el Grado del
-            Síndrome de Burnout, que puede ser más o menos severo dependiendo de
-            si los indicios aparecen en uno, dos o tres ámbitos; y de la mayor o
-            menor diferencia de los resultados con respecto a los valores de
-            referencia que marcan los indicios del síndrome. Este análisis de
-            aspectos e ítems puede orientar sobre los puntos fuertes y débiles
-            de cada uno en su labor.
+          <p v-if="positive" class="text-option">
+            Al haber obtenido altas una puntuación en las dos primeras
+            subescalas de Cansancio Emocional y Despersonalización; mas una
+            puntuación baja en la subescala de Realización Personal se define el
+            síndrome de Burnout.<br />
+            Se le recomienda acudir a un especialista de la salud mental.
+          </p>
+          <p v-if="!positive" class="text-option">
+            Al no haber obtenido altas puntuaciones en las dos primeras
+            subescalas de Cansancio Emocional y Despersonalización; acompañada
+            de una puntuación baja en la subescala de Realización Personal no se
+            define el síndrome de Burnout. <br />
+            Si no cumple con los criterios clínicos para Burnout, pero a pesar
+            de eso ha obtenido una puntuación alta en alguna de las dos primeras
+            dimensiones, o una puntuación baja en la tercera dimensión, se le
+            recomienda acudir a un especialista de la salud mental.
           </p>
         </div>
       </div>
@@ -94,15 +98,15 @@ export default {
     }
     let number = [];
     let qu1 = Object.values(JSON.parse(this.quest1));
-    qu1.forEach((x) => {
+    qu1.forEach(x => {
       number.push(parseInt(x));
     });
     let q2 = Object.values(JSON.parse(this.quest2));
-    q2.forEach((x) => {
+    q2.forEach(x => {
       number.push(parseInt(x));
     });
     let q3 = Object.values(JSON.parse(this.quest3));
-    q3.forEach((x) => {
+    q3.forEach(x => {
       number.push(parseInt(x));
     });
     this.r1 =
@@ -125,20 +129,31 @@ export default {
       number[17] +
       number[18] +
       number[20];
+    if (
+      this.r1 >= 27 &&
+      this.r1 <= 54 &&
+      this.r2 >= 10 &&
+      this.r2 <= 30 &&
+      this.r3 >= 0 &&
+      this.r3 <= 33
+    ) {
+      this.positive = true;
+    }
   },
   data() {
     return {
+      positive: false,
       r1: 0,
       rt1: 54,
       r2: 0,
       rt2: 30,
       r3: 0,
-      rt3: 48,
+      rt3: 48
     };
   },
   firestore() {
     return {
-      formsDB: db.collection("forms"),
+      formsDB: db.collection("forms")
     };
   },
   methods: {
@@ -146,22 +161,36 @@ export default {
       this.$firestore.formsDB
         .add({
           accept: true,
-          date: new Date(),
+          date: new Date()
         })
         .then(function(resp) {
           console.log(resp);
         });
-    },
+    }
   },
   components: {
     Navbar,
-    RadialProgressBar,
-  },
+    RadialProgressBar
+  }
 };
 </script>
 <style>
 .column .radial-progress-container {
   margin: 0 auto;
+}
+
+.text-option {
+  margin-left: 7%;
+  margin-right: 7%;
+  font-style: italic;
+  text-align: center;
+}
+.text-option {
+  margin-left: 7%;
+  margin-right: 7%;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .margin {

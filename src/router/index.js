@@ -9,6 +9,7 @@ import Form5 from "../views/form5.vue";
 import Results from "../views/results.vue";
 import Login from "../views/admin/login";
 import Admin from "../views/admin/admin";
+import Thank from "../views/Thank";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,12 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/thanks",
+    name: "Thank",
+    component: Thank,
+    props: true
   },
   {
     path: "/form/1",
