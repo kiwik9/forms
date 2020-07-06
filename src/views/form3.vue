@@ -1,7 +1,13 @@
 <template>
   <div class="home bg-img">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
-      <div class="column is-half" style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
+      <div
+        class="column is-half"
+        style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)"
+      >
         <Navbar
           msg="Cuestionario: Cansancio Emocional"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "
@@ -22,7 +28,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q1" native-value="0">
                 0
               </b-radio-button>
@@ -44,7 +50,7 @@
               <b-radio-button style="margin: 2%" v-model="q1" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q1"
@@ -60,7 +66,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q2" native-value="0">
                 0
               </b-radio-button>
@@ -82,7 +88,7 @@
               <b-radio-button style="margin: 2%" v-model="q2" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q2"
@@ -98,7 +104,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q3" native-value="0">
                 0
               </b-radio-button>
@@ -120,7 +126,7 @@
               <b-radio-button style="margin: 2%" v-model="q3" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q3"
@@ -136,7 +142,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q4" native-value="0">
                 0
               </b-radio-button>
@@ -158,7 +164,7 @@
               <b-radio-button style="margin: 2%" v-model="q4" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q4"
@@ -174,7 +180,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q5" native-value="0">
                 0
               </b-radio-button>
@@ -196,7 +202,7 @@
               <b-radio-button style="margin: 2%" v-model="q5" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q5"
@@ -212,7 +218,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q6" native-value="0">
                 0
               </b-radio-button>
@@ -234,7 +240,7 @@
               <b-radio-button style="margin: 2%" v-model="q6" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q6"
@@ -250,7 +256,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q7" native-value="0">
                 0
               </b-radio-button>
@@ -272,7 +278,7 @@
               <b-radio-button style="margin: 2%" v-model="q7" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q7"
@@ -288,7 +294,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q8" native-value="0">
                 0
               </b-radio-button>
@@ -310,7 +316,7 @@
               <b-radio-button style="margin: 2%" v-model="q8" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q8"
@@ -326,7 +332,7 @@
             >
             </b-field>
             <b-field style="align-self: center;">
-              <h5 style="align-self: center;">Nunca</h5>
+              <h5 class="hide-text">Nunca</h5>
               <b-radio-button style="margin: 2%" v-model="q9" native-value="0">
                 0
               </b-radio-button>
@@ -348,7 +354,7 @@
               <b-radio-button style="margin: 2%" v-model="q9" native-value="6">
                 6
               </b-radio-button>
-              <h5 style="align-self: center;">Todos los dias</h5>
+              <h5 class="hide-text">Todos los dias</h5>
             </b-field>
             <b-field
               v-if="error_q9"
@@ -480,6 +486,19 @@ export default {
 };
 </script>
 <style>
+@media screen and (min-width: 960px) {
+  .hide-text{
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .hide-text{
+    align-self: center;
+    display: none;
+  }
+}
+
 .margin {
   margin-left: 5%;
   margin-right: 5%;
