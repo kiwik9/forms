@@ -94,15 +94,15 @@ export default {
     }
     let number = [];
     let qu1 = Object.values(JSON.parse(this.quest1));
-    qu1.forEach(x => {
+    qu1.forEach((x) => {
       number.push(parseInt(x));
     });
     let q2 = Object.values(JSON.parse(this.quest2));
-    q2.forEach(x => {
+    q2.forEach((x) => {
       number.push(parseInt(x));
     });
     let q3 = Object.values(JSON.parse(this.quest3));
-    q3.forEach(x => {
+    q3.forEach((x) => {
       number.push(parseInt(x));
     });
     this.r1 =
@@ -133,12 +133,12 @@ export default {
       r2: 0,
       rt2: 30,
       r3: 0,
-      rt3: 48
+      rt3: 48,
     };
   },
   firestore() {
     return {
-      formsDB: db.collection("forms")
+      formsDB: db.collection("forms"),
     };
   },
   methods: {
@@ -146,20 +146,24 @@ export default {
       this.$firestore.formsDB
         .add({
           accept: true,
-          date: new Date()
+          date: new Date(),
         })
         .then(function(resp) {
           console.log(resp);
         });
-    }
+    },
   },
   components: {
     Navbar,
-    RadialProgressBar
-  }
+    RadialProgressBar,
+  },
 };
 </script>
 <style>
+.column .radial-progress-container {
+  margin: 0 auto;
+}
+
 .margin {
   margin-left: 5%;
   margin-right: 5%;
