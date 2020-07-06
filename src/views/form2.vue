@@ -332,7 +332,7 @@ export default {
       guardTypeError: false,
       turnHourError: false,
       equipError: false,
-      riskError: false
+      riskError: false,
     };
   },
   methods: {
@@ -342,7 +342,7 @@ export default {
         message: `Es necesario responder todas las preguntas.`,
         position: "is-bottom-right",
         type: "is-danger",
-        hasIcon: false
+        hasIcon: false,
       });
     },
     changeForm() {
@@ -429,13 +429,13 @@ export default {
         guardType: this.guardType,
         turnHour: this.turnHour,
         equip: this.equip,
-        risk: this.risk
+        risk: this.risk,
       };
       this.$router.push({
         name: "Form3",
-        params: { data: JSON.stringify(data) }
+        params: { data: JSON.stringify(data) },
       });
-    }
+    },
   },
   mounted() {
     if (!this.perm) {
@@ -443,18 +443,11 @@ export default {
     }
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>
-.bg-img {
-  background-image: url("../assets/Image2.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
 .margin {
   margin-left: 5%;
   margin-right: 5%;

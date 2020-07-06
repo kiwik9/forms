@@ -1,13 +1,17 @@
 <template>
   <div class="home" style="height: 100%">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
       <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar msg="" />
         <br />
         <div class="margin">
           <p style="text-align: justify">
-            ¿Continua usted laborando durante el periodo de pandemia? Si su
-            respuesta es "SI" puede continuar con el cuestionario *
+            ¿Continua usted laborando durante el periodo de pandemia?
+            <br />
+            Si su respuesta es "SI" puede continuar con el cuestionario *
           </p>
           <section style="margin-top: 25px">
             <div class="field">
@@ -39,7 +43,7 @@ export default {
   props: ["perm"],
   data() {
     return {
-      radio: "Si"
+      radio: "Si",
     };
   },
   methods: {
@@ -49,9 +53,9 @@ export default {
       }
       this.$router.push({
         name: "Form2",
-        params: { perm: true }
+        params: { perm: true },
       });
-    }
+    },
   },
   mounted() {
     if (!this.perm) {
@@ -59,8 +63,8 @@ export default {
     }
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>

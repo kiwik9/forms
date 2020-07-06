@@ -1,6 +1,9 @@
 <template>
   <div class="home" style="height: 100%">
-    <div class="columns is-centered is-gapless is-0-desktop"  style="height: 100%">
+    <div
+      class="columns is-centered is-gapless is-0-desktop"
+      style="height: 100%"
+    >
       <div class="column is-half" style="height: 100%; background-color: white">
         <Navbar />
         <br />
@@ -9,10 +12,11 @@
             Invito a usted a participar de la siguiente encuesta anónima, con el
             objetivo de identificar los factores asociados a este síndrome que
             se puedan encontrar entre los trabajadores de la salud. Se le
-            agradece de antemano su participación. Los datos recolectados sólo
-            serán conocidos y trabajados por el personal investigador. Usted
-            tiene derecho a no participar de la encuesta virtual, si no lo
-            desea.
+            agradece de antemano su participación.
+            <br />
+            Los datos recolectados sólo serán conocidos y trabajados por el
+            personal investigador. Usted tiene derecho a no participar de la
+            encuesta virtual, si no lo desea.
           </p>
           <b-field grouped position="is-right">
             <div class="buttons" style="margin-top: 25px;">
@@ -36,7 +40,7 @@ export default {
   },
   firestore() {
     return {
-      formsDB: db.collection("forms")
+      formsDB: db.collection("forms"),
     };
   },
   methods: {
@@ -44,7 +48,7 @@ export default {
       this.$firestore.formsDB
         .add({
           accept: true,
-          date: new Date()
+          date: new Date(),
         })
         .then(function(resp) {
           console.log(resp);
@@ -53,21 +57,21 @@ export default {
     changeForm() {
       this.$router.push({
         name: "Form1",
-        params: { perm: true }
+        params: { perm: true },
       });
-    }
+    },
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>
-  body,
-  html {
-    width: 100%;
-    height: 100%;
-  }
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
 .margin {
   margin-left: 5%;
   margin-right: 5%;

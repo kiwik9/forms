@@ -5,17 +5,16 @@
 </template>
 
 <style>
-  body,
-  html {
-    width: 100%;
-    height: auto;
-  }
+body,
+html {
+  width: 100%;
+  height: auto;
+}
 body {
-  background-image: url("assets/Image2.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  background: #b8c2c3 !important;
+}
+.home.bg-img {
+  background: #b8c2c3 !important;
 }
 .bg-image {
   width: 100%;
