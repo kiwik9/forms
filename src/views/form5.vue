@@ -99,7 +99,7 @@
 
           <section style="margin-top: 25px">
             <b-field
-              label="3. Siento que estoy influyendo positiva mente en la vida de otras personas a través de mi trabajo"
+              label="3. Siento que estoy influyendo positivamente en la vida de otras personas a través de mi trabajo"
               style="margin-bottom: 25px"
             >
             </b-field>
