@@ -13,7 +13,7 @@
         <div class="margin">
           <div
             class="columns is-0-desktop is-multiline is-centered"
-            style="margin-top: 50px;margin-bottom: 100px"
+            style="margin-top: 50px;margin-bottom: 80px"
           >
             <div class="column">
               <radial-progress-bar
@@ -59,8 +59,12 @@
               </p>
             </div>
           </div>
+          <div class="table-wrapper">
+            <b-table :data="tableData" :columns="columns"></b-table>
+          </div>
 
           <p v-if="positive" class="text-option">
+            <strong>Cumple con los criterios clínicos para Burnout</strong>
             Al haber obtenido altas una puntuación en las dos primeras
             subescalas de Cansancio Emocional y Despersonalización; mas una
             puntuación baja en la subescala de Realización Personal se define el
@@ -68,6 +72,7 @@
             Se le recomienda acudir a un especialista de la salud mental.
           </p>
           <p v-if="!positive" class="text-option">
+            <strong>No cumple con los criterios clínicos para Burnout</strong>
             Al no haber obtenido altas puntuaciones en las dos primeras
             subescalas de Cansancio Emocional y Despersonalización; acompañada
             de una puntuación baja en la subescala de Realización Personal no se
@@ -98,15 +103,15 @@ export default {
     }
     let number = [];
     let qu1 = Object.values(JSON.parse(this.quest1));
-    qu1.forEach(x => {
+    qu1.forEach((x) => {
       number.push(parseInt(x));
     });
     let q2 = Object.values(JSON.parse(this.quest2));
-    q2.forEach(x => {
+    q2.forEach((x) => {
       number.push(parseInt(x));
     });
     let q3 = Object.values(JSON.parse(this.quest3));
-    q3.forEach(x => {
+    q3.forEach((x) => {
       number.push(parseInt(x));
     });
     this.r1 =
@@ -148,12 +153,52 @@ export default {
       r2: 0,
       rt2: 30,
       r3: 0,
-      rt3: 48
+      rt3: 48,
+      tableData: [
+        {
+          id: "Cansancio Emocional",
+          first_name: "0-18",
+          last_name: "19-26",
+          date: "27-54",
+        },
+        {
+          id: "Despersonalización",
+          first_name: "0-5",
+          last_name: "6-9",
+          date: "10-30",
+        },
+        {
+          id: "Realización Personal",
+          first_name: "0-33",
+          last_name: "34-39",
+          date: "40-48",
+        },
+      ],
+      columns: [
+        {
+          field: "id",
+          label: "",
+          width: "250",
+        },
+        {
+          field: "first_name",
+          label: "Bajo",
+        },
+        {
+          field: "last_name",
+          label: "Medio",
+        },
+        {
+          field: "date",
+          label: "Alto",
+          centered: true,
+        },
+      ],
     };
   },
   firestore() {
     return {
-      formsDB: db.collection("forms")
+      formsDB: db.collection("forms"),
     };
   },
   methods: {
@@ -161,20 +206,24 @@ export default {
       this.$firestore.formsDB
         .add({
           accept: true,
-          date: new Date()
+          date: new Date(),
         })
         .then(function(resp) {
           console.log(resp);
         });
-    }
+    },
   },
   components: {
     Navbar,
-    RadialProgressBar
-  }
+    RadialProgressBar,
+  },
 };
 </script>
 <style>
+.table-wrapper {
+  padding: 20px 30px;
+  padding-top: 0;
+}
 .column .radial-progress-container {
   margin: 0 auto;
 }
