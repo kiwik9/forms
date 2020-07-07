@@ -6,7 +6,7 @@
     >
       <div class="column is-half" style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)">
         <Navbar
-          msg="Cuestionario: Cansancio Emocional"
+          msg="Cuestionario: Despersonalización"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "
           q1="0 = Nunca"
           q2="1 = Pocas veces al año o menos"

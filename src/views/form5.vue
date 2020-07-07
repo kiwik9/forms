@@ -4,9 +4,12 @@
       class="columns is-centered is-gapless is-0-desktop"
       style="height: 100%"
     >
-      <div class="column is-half" style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)">
+      <div
+        class="column is-half"
+        style="height: 100%; background-color:  rgba(255, 255, 255, 0.99)"
+      >
         <Navbar
-          msg="Cuestionario: Cansancio Emocional"
+          msg="Cuestionario: Realización Personal"
           msg2="CALIFICAR DEL 0 AL 6 LAS RESPUESTA SOBRE LA FRECUENCIA CON QUE SIENTE LOS ENUNCIADOS:   "
           q1="0 = Nunca"
           q2="1 = Pocas veces al año o menos"
@@ -366,12 +369,12 @@ export default {
       error_q5: false,
       error_q6: false,
       error_q7: false,
-      error_q8: false
+      error_q8: false,
     };
   },
   firestore() {
     return {
-      formsDB: db.collection("forms")
+      formsDB: db.collection("forms"),
     };
   },
   methods: {
@@ -384,7 +387,7 @@ export default {
         q5: this.q5,
         q6: this.q6,
         q7: this.q7,
-        q8: this.q8
+        q8: this.q8,
       };
       let router = this.$router;
       let quest1 = this.quest1;
@@ -396,7 +399,7 @@ export default {
           form1: JSON.parse(this.quest1),
           form2: JSON.parse(this.quest2),
           form3: quest3,
-          createdAt: new Date()
+          createdAt: new Date(),
         })
         .then(function(resp) {
           console.log(resp);
@@ -406,8 +409,8 @@ export default {
               quest3: JSON.stringify(quest3),
               quest2: quest2,
               quest1: quest1,
-              data: data
-            }
+              data: data,
+            },
           });
         });
     },
@@ -417,7 +420,7 @@ export default {
         message: `Es necesario responder todas las preguntas.`,
         position: "is-bottom-right",
         type: "is-danger",
-        hasIcon: false
+        hasIcon: false,
       });
     },
     changeForm() {
@@ -471,11 +474,11 @@ export default {
         return;
       }
       this.add();
-    }
+    },
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 <style>
