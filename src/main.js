@@ -6,7 +6,9 @@ import VueFirestore from "vue-firestore";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 import JsonExcel from "vue-json-excel";
+import VueApexCharts from "vue-apexcharts";
 
+Vue.component("apexchart", VueApexCharts);
 Vue.component("downloadExcel", JsonExcel);
 
 Vue.use(Buefy);

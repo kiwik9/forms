@@ -401,7 +401,7 @@ export default {
       error_q6: false,
       error_q7: false,
       error_q8: false,
-      error_q9: false,
+      error_q9: false
     };
   },
   methods: {
@@ -411,7 +411,7 @@ export default {
         message: `Es necesario responder todas las preguntas.`,
         position: "is-bottom-right",
         type: "is-danger",
-        hasIcon: false,
+        hasIcon: false
       });
     },
     changeForm() {
@@ -469,28 +469,28 @@ export default {
         q6: this.q6,
         q7: this.q7,
         q8: this.q8,
-        q9: this.q9,
+        q9: this.q9
       };
       this.$router.push({
         name: "Form4",
-        params: { quest1: JSON.stringify(quest1), data: this.data },
+        params: { quest1: JSON.stringify(quest1), data: this.data }
       });
-    },
+    }
   },
   components: {
-    Navbar,
-  },
+    Navbar
+  }
 };
 </script>
 <style>
 @media screen and (min-width: 960px) {
-  .hide-text{
+  .hide-text {
     align-self: center;
   }
 }
 
 @media screen and (max-width: 960px) {
-  .hide-text{
+  .hide-text {
     align-self: center;
     display: none;
   }

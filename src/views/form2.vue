@@ -102,7 +102,7 @@
                 <option value="4">Obstetra</option>
                 <option value="5">Técnico de Enfermeria </option>
                 <option value="6">Quimico Farmaceutico </option>
-                <option value="7">Nutricionista</option>
+                <option value="7">Médico General</option>
               </b-select>
             </b-field>
             <b-field

@@ -2,20 +2,57 @@
   <div style="height: 100%; background-color: white">
     <div style="height: auto">
       <div class="margin" style="height: 100%">
-        <download-excel
-          name="Encuestas.xls"
-          style="margin-top: 50px"
-          :data="data"
-        >
-          <b-button type="is-link">
-            Descargar Excel
-          </b-button>
-        </download-excel>
-        <b-table
-          style="margin-top: 50px"
-          :data="data"
-          :columns="columns"
-        ></b-table>
+        <div class="columns is-desktop is-centered">
+          <div class="column">
+            <download-excel
+              name="Encuestas.xls"
+              style="margin-top: 50px"
+              :data="data"
+            >
+              <b-button type="is-link">
+                Resultados de las Encuestas
+              </b-button>
+            </download-excel>
+            <br />
+            <download-excel name="General.xls" :data="data2">
+              <b-button type="is-link">
+                Resultado General
+              </b-button>
+            </download-excel>
+          </div>
+        </div>
+        <div class="columns is-desktop is-centered">
+          <div class="column">
+            <h1 style="text-align: left;">Casos positivos {{ pos }}</h1>
+            <br />
+            <apexchart
+              width="500"
+              type="donut"
+              :options="options"
+              :series="series"
+            ></apexchart>
+          </div>
+          <div class="column">
+            <h1 style="text-align: left;">Casos Negativos: {{ neg }}</h1>
+            <br />
+            <apexchart
+              width="500"
+              type="donut"
+              :options="options"
+              :series="series2"
+            ></apexchart>
+          </div>
+          <div class="column">
+            <h1 style="text-align: left;">Casos Totales: {{ neg + pos }}</h1>
+            <br />
+            <apexchart
+              width="500"
+              type="donut"
+              :options="options2"
+              :series="series3"
+            ></apexchart>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -28,90 +65,27 @@ export default {
   data() {
     return {
       data: [],
-      columns: [
-        {
-          field: "Nro",
-          label: "Nro"
-        },
-        {
-          field: "edad",
-          label: "Edad",
-          searchable: true
-        },
-        {
-          field: "Experiencia Laboral",
-          label: "Experiencia Laboral",
-          searchable: true
-        },
-        {
-          field: "Años en el Hospital",
-          label: "Años en el Hospital",
-          searchable: true
-        },
-        {
-          field: "Sexo",
-          label: "Sexo",
-          searchable: true
-        },
-        {
-          field: "Hijos",
-          label: "Hijos",
-          searchable: true
-        },
-        {
-          field: "Estado Civil",
-          label: "Estado Civil",
-          searchable: true
-        },
-        {
-          field: "Riesgo",
-          label: "Riesgo",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Especialidad",
-          label: "Especialidad",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Trabajo",
-          label: "Trabajo",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Exclusividad en Hospital",
-          label: "Exclusividad en Hospital",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Horas por turno",
-          label: "Horas por turno",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Equipo de Proteccion",
-          label: "Equipo de Proteccion",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Guardia",
-          label: "Guardia",
-          date: true,
-          searchable: true
-        },
-        {
-          field: "Registro",
-          label: "Registro",
-          date: true,
-          searchable: true
-        }
-      ]
+      pos: 0,
+      neg: 0,
+      data2: [],
+      options: {
+        labels: [
+          "Médico Asistente",
+          "Médico Residente",
+          "Tecnólogo Médico",
+          "Enfermera",
+          "Obstetra",
+          "Técnico de Enfermeria",
+          "Quimico Farmaceutico",
+          "Médico General"
+        ]
+      },
+      options2: {
+        labels: ["Positivos", "Negativos"]
+      },
+      series: [],
+      series2: [],
+      series3: []
     };
   },
   firestore() {
@@ -122,10 +96,29 @@ export default {
   methods: {},
   async mounted() {
     if (!localStorage.user) {
-      this.$router.push({ name: "Login" });
+      await this.$router.push({ name: "Login" });
       return;
     }
+
     const data = this.data;
+    let pos = 0;
+    let neg = 0;
+    let pos0 = 0;
+    let pos1 = 0;
+    let pos2 = 0;
+    let pos3 = 0;
+    let pos4 = 0;
+    let pos5 = 0;
+    let pos6 = 0;
+    let pos7 = 0;
+    let neg0 = 0;
+    let neg1 = 0;
+    let neg2 = 0;
+    let neg3 = 0;
+    let neg4 = 0;
+    let neg5 = 0;
+    let neg6 = 0;
+    let neg7 = 0;
     let id = 0;
     await db
       .collection("forms")
@@ -133,7 +126,7 @@ export default {
       .then(function(query) {
         query.forEach(function(doc) {
           id = id + 1;
-          let f = doc.data();
+          let f = JSON.parse(JSON.stringify(doc.data()));
           let date = new Date(f.createdAt.seconds * 1000);
           let number = [];
           let qu1 = Object.values(f.form1);
@@ -191,8 +184,60 @@ export default {
           if (r3 >= 40 && r3 <= 56) {
             result3 = "ALTO";
           }
+          const type = parseInt(f.data.workerType);
           if (result1 === "ALTO" && result2 === "ALTO" && result3 === "BAJO") {
             positivo = "1";
+            pos = pos + 1;
+            if (type === 0) {
+              pos0 = pos0 + 1;
+            }
+            if (type === 1) {
+              pos1 = pos1 + 1;
+            }
+            if (type === 2) {
+              pos2 = pos2 + 1;
+            }
+            if (type === 3) {
+              pos3 = pos3 + 1;
+            }
+            if (type === 4) {
+              pos4 = pos4 + 1;
+            }
+            if (type === 5) {
+              pos5 = pos5 + 1;
+            }
+            if (type === 6) {
+              pos6 = pos6 + 1;
+            }
+            if (type === 7) {
+              pos7 = pos7 + 1;
+            }
+          } else {
+            neg = neg + 1;
+            if (type === 0) {
+              neg0 = neg0 + 1;
+            }
+            if (type === 1) {
+              neg1 = neg1 + 1;
+            }
+            if (type === 2) {
+              neg2 = neg2 + 1;
+            }
+            if (type === 3) {
+              neg3 = neg3 + 1;
+            }
+            if (type === 4) {
+              neg4 = neg4 + 1;
+            }
+            if (type === 5) {
+              neg5 = neg5 + 1;
+            }
+            if (type === 6) {
+              neg6 = neg6 + 1;
+            }
+            if (type === 7) {
+              neg7 = neg7 + 1;
+            }
           }
 
           let value = {
@@ -210,7 +255,7 @@ export default {
             "Equipo de Proteccion": f.data.equip,
             "Horas por turno": f.data.turnHour,
             "Exclusividad en Hospital": f.data.esclusivity,
-            Trabajo: f.data.workerType,
+            Trabajo: type,
             Especialidad: f.data.speciality,
             "Puntuacion Cansancio Emocional": `${result1} (${r1})`,
             "Puntuacion Despersonalizacion": `${result2} (${r2})`,
@@ -224,6 +269,48 @@ export default {
         console.log("Error getting documents: ", error);
       });
     this.data = data;
+    this.series.push(pos0);
+    this.series.push(pos1);
+    this.series.push(pos2);
+    this.series.push(pos3);
+    this.series.push(pos4);
+    this.series.push(pos5);
+    this.series.push(pos6);
+    this.series.push(pos7);
+    this.series2.push(neg0);
+    this.series2.push(neg1);
+    this.series2.push(neg2);
+    this.series2.push(neg3);
+    this.series2.push(neg4);
+    this.series2.push(neg5);
+    this.series2.push(neg6);
+    this.series2.push(neg7);
+    this.pos = pos;
+    this.neg = neg;
+    let data2 = {
+      Total: neg + pos,
+      "Total Positivos": pos,
+      "Total Negativos": neg,
+      "Médico Asistente Positivos": pos0,
+      "Médico Residente Positivos": pos1,
+      "Tecnólogo Médico Positivos": pos2,
+      "Enfermera Positivos": pos3,
+      "Obstetra Positivos": pos4,
+      "Técnico de Enfermeria Positivos": pos5,
+      "Quimico Farmaceutico Positivos": pos6,
+      "Médico General Positivos": pos7,
+      "Médico Asistente Negativo": neg0,
+      "Médico Residente Negativo": neg1,
+      "Tecnólogo Médico Negativo": neg2,
+      "Enfermera Negativo": neg3,
+      "Obstetra Negativo": neg4,
+      "Técnico de Enfermeria Negativo": neg5,
+      "Quimico Farmaceutico Negativo": neg6,
+      "Médico General Negativo": neg7
+    };
+    this.data2.push(data2);
+    this.series3.push(pos);
+    this.series3.push(neg);
   }
 };
 </script>

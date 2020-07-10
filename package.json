@@ -10,9 +10,12 @@
   "dependencies": {
     "@firebase/app": "^0.6.7",
     "@firebase/firestore": "^1.15.5",
+    "apexcharts": "^3.19.3",
     "buefy": "^0.8.20",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
+    "vue-apexcharts": "^1.5.3",
     "vue-firestore": "^0.3.30",
     "vue-json-excel": "^0.2.98",
     "vue-radial-progress": "^0.3.2",
