@@ -10,7 +10,7 @@
   "dependencies": {
     "@firebase/app": "^0.6.7",
     "@firebase/firestore": "^1.15.5",
-    "apexcharts": "^3.19.3",
+    "apexcharts": "^3.24.0",
     "buefy": "^0.8.20",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
